@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gizlilik Politikası – Deneva: Deneme Takip</title>
+  <title>Deneme Takip – Deneva | KPSS, YKS, LGS Sınav Analiz Uygulaması</title>
+  <meta name="description" content="Deneva ile KPSS, YKS, TYT, AYT ve LGS sınavlarınızı takip edin. Net analizleri, yanlış arşivi, PDF raporlar ve bulut senkronizasyon tek uygulamada." />
   <style>
+    /* ── Reset & Base ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --navy:    #0D1B4B;
       --blue:    #1565C0;
       --blue2:   #1976D2;
       --light:   #E3F2FD;
       --amber:   #FFB300;
+      --amber2:  #FFC107;
       --green:   #2E7D32;
       --red:     #C62828;
       --bg:      #F0F4FF;
@@ -20,7 +24,9 @@
       --muted:   #607080;
       --border:  #E0E6F5;
     }
+
     html { scroll-behavior: smooth; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
                    'Helvetica Neue', Arial, sans-serif;
@@ -30,112 +36,216 @@
       font-size: 15px;
     }
 
-    /* Header */
-    header {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-      color: #fff;
-      padding: 0;
-      position: relative;
-      overflow: hidden;
+    /* ── STICKY NAV ───────────────────────────────────────────── */
+    .top-nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
     }
-    header::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -80px;
-      width: 340px; height: 340px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      pointer-events: none;
-    }
-    .header-inner {
-      max-width: 900px;
+    .top-nav-inner {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 24px 36px;
-      position: relative;
-      z-index: 1;
+      padding: 0 24px;
       display: flex;
       align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      height: 60px;
     }
-    .logo-wrap {
-      flex-shrink: 0;
-      width: 72px; height: 72px;
-      border-radius: 18px;
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo .nav-icon {
+      font-size: 24px;
+    }
+    .nav-logo .nav-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+    .nav-logo .nav-name span { color: var(--amber); }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-link {
+      white-space: nowrap;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: color .2s, background .2s;
+    }
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1B3A8A 60%, var(--blue2) 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px 100px;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -100px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero-logo {
+      width: 96px; height: 96px;
+      border-radius: 24px;
       background: rgba(255,255,255,0.12);
       border: 2px solid rgba(255,255,255,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      font-size: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      margin: 0 auto 28px;
     }
-    .header-text .app-name {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 8px;
     }
-    .header-text .app-name span { color: var(--amber); }
-    .header-text .page-title {
-      font-size: 0.9rem;
-      opacity: 0.7;
-      margin-top: 4px;
+    .hero h1 span { color: var(--amber); }
+    .hero .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 32px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 12px;
-      background: rgba(255,255,255,0.12);
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.14);
       border: 1px solid rgba(255,255,255,0.25);
       color: #fff;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.82rem;
+      border-radius: 30px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
       font-weight: 600;
-      text-decoration: none;
-      transition: background .2s;
     }
-    .back-link:hover {
-      background: rgba(255,255,255,0.2);
-      text-decoration: none;
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
     }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber);
+      color: var(--navy);
+      border-radius: 14px;
+      padding: 14px 28px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .2s, opacity .2s;
+      box-shadow: 0 6px 24px rgba(255,179,0,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.93; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: #fff;
+      border-radius: 14px;
+      padding: 14px 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
 
-    /* Sticky nav */
-    .toc-bar {
+    /* ── STATS BAR ────────────────────────────────────────────── */
+    .stats-bar {
       background: var(--card-bg);
       border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
-    .toc-inner {
-      max-width: 900px;
+    .stats-inner {
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
       display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
       gap: 0;
-      overflow-x: auto;
-      scrollbar-width: none;
     }
-    .toc-inner::-webkit-scrollbar { display: none; }
-    .toc-link {
-      white-space: nowrap;
-      padding: 13px 16px;
-      font-size: 0.8rem;
-      font-weight: 600;
+    .stat-item {
+      padding: 22px 40px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-num span { color: var(--blue); }
+    .stat-label {
+      font-size: 0.78rem;
       color: var(--muted);
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      transition: color .2s, border-color .2s;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
     }
-    .toc-link:hover { color: var(--blue); border-bottom-color: var(--blue); }
 
-    /* Main */
-    main {
-      max-width: 900px;
+    /* ── SECTION COMMON ───────────────────────────────────────── */
+    .section {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 24px 60px;
+      padding: 72px 24px;
     }
     .section-label {
       display: inline-flex;
@@ -149,352 +259,788 @@
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .section-title {
-      font-size: 1.5rem;
+      font-size: 1.9rem;
       font-weight: 800;
       color: var(--navy);
-      margin-bottom: 24px;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
     }
-    .policy-card {
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 620px;
+    }
+
+    /* ── FEATURES GRID ────────────────────────────────────────── */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feat-card {
       background: var(--card-bg);
-      border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(21,101,192,0.07);
-      padding: 32px 28px;
-      margin-bottom: 24px;
+      border-radius: 18px;
+      padding: 28px 24px;
       border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(21,101,192,0.06);
+      transition: transform .2s, box-shadow .2s;
     }
-    .policy-card h2 {
+    .feat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(21,101,192,0.12);
+    }
+    .feat-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .feat-title {
       font-size: 1rem;
       font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      color: var(--navy);
+      margin-bottom: 8px;
     }
-    .policy-card h2::before {
-      content: '';
-      display: inline-block;
-      width: 4px; height: 20px;
-      background: var(--blue);
-      border-radius: 3px;
-      flex-shrink: 0;
-    }
-    .policy-card p,
-    .policy-card li {
+    .feat-desc {
+      font-size: 0.875rem;
       color: var(--muted);
-      font-size: 0.93rem;
-      line-height: 1.75;
+      line-height: 1.65;
+    }
+    .feat-tag {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--light);
+      color: var(--blue);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    /* ── EXAM TYPES ───────────────────────────────────────────── */
+    .exam-section {
+      background: linear-gradient(135deg, var(--navy) 0%, #1B3A8A 100%);
+      padding: 72px 24px;
+    }
+    .exam-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .exam-section .section-label {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .exam-section .section-title {
+      color: #fff;
+    }
+    .exam-section .section-sub {
+      color: rgba(255,255,255,0.65);
+    }
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .exam-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      padding: 22px 20px;
+      transition: background .2s, transform .2s;
+    }
+    .exam-card:hover {
+      background: rgba(255,255,255,0.13);
+      transform: translateY(-3px);
+    }
+    .exam-label {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--amber);
       margin-bottom: 6px;
     }
-    .policy-card ul { padding-left: 20px; margin-top: 8px; }
-    .policy-card li::marker { color: var(--blue); }
-    .policy-card strong { color: var(--text); }
-
-    .info-box {
-      background: #FFF8E1;
-      border-left: 4px solid var(--amber);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin: 12px 0;
-      font-size: 0.88rem;
-      color: #5D4037;
-      line-height: 1.6;
-    }
-    .alert-box {
-      background: #FFEBEE;
-      border-left: 4px solid var(--red);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin: 12px 0;
-      font-size: 0.88rem;
-      color: #7f1515;
-      line-height: 1.6;
-    }
-    .service-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
-    .svc-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #E8EAF6;
-      color: #283593;
-      border-radius: 8px;
-      padding: 6px 14px;
+    .exam-name {
       font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
       font-weight: 600;
-      border: 1px solid #C5CAE9;
+      margin-bottom: 4px;
     }
-    .svc-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
-
-    .perm-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-    .perm-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: #F8F9FE;
-      border-radius: 10px;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-    }
-    .perm-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-    .perm-text .perm-name { font-weight: 700; font-size: 0.88rem; color: var(--text); }
-    .perm-text .perm-desc { font-size: 0.82rem; color: var(--muted); margin: 0; }
-
-    .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-
-    .contact-card {
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      border-radius: 16px;
-      padding: 28px 24px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .contact-card .c-icon { font-size: 36px; flex-shrink: 0; }
-    .contact-card .c-text h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-    .contact-card .c-text p { font-size: 0.85rem; opacity: 0.75; margin-bottom: 10px; }
-    .contact-card a {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-      padding: 8px 20px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background .2s;
-    }
-    .contact-card a:hover { background: rgba(255,255,255,0.25); }
-
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    footer {
-      background: var(--navy);
+    .exam-detail {
+      font-size: 0.75rem;
       color: rgba(255,255,255,0.5);
-      text-align: center;
-      padding: 24px;
-      font-size: 0.82rem;
+      line-height: 1.5;
     }
-    footer a { color: rgba(255,255,255,0.7); }
-    .footer-links {
+
+    /* ── HOW IT WORKS ─────────────────────────────────────────── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      counter-reset: steps;
+    }
+    .step-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 28px 22px;
+      border: 1px solid var(--border);
+      position: relative;
+      counter-increment: steps;
+    }
+    .step-card::before {
+      content: counter(steps);
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--light);
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── MOCKUP SCREENS ───────────────────────────────────────── */
+    .screens-section {
+      background: linear-gradient(180deg, #0f2367 0%, var(--navy) 100%);
+      padding: 72px 24px;
+    }
+    .screens-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .screens-section .section-title { color: #fff; }
+    .screens-section .section-sub { color: rgba(255,255,255,0.6); }
+    .screens-section .section-label {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .screen-row {
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      margin: 10px 0 6px;
+      margin-top: 40px;
+    }
+    .screen-mock {
+      width: 150px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.07);
+      border: 2px solid rgba(255,255,255,0.15);
+      overflow: hidden;
+    }
+    .mock-top {
+      background: rgba(255,255,255,0.1);
+      padding: 11px 14px 9px;
+      font-size: 0.67rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mock-body {
+      padding: 12px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .mock-bar {
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.18);
+    }
+    .mock-bar.accent  { background: var(--amber); width: 72%; }
+    .mock-bar.green   { background: #66BB6A; width: 58%; }
+    .mock-bar.purple  { background: #CE93D8; width: 48%; }
+    .mock-bar.w90 { width: 90%; }
+    .mock-bar.w80 { width: 80%; }
+    .mock-bar.w70 { width: 70%; }
+    .mock-bar.w60 { width: 60%; }
+    .mock-bar.w50 { width: 50%; }
+    .mock-bar.w40 { width: 40%; }
+    .mock-stat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot-g { background: #66BB6A; }
+    .dot-r { background: #EF9A9A; }
+    .dot-b { background: #90CAF9; }
+    .mock-stat span { color: rgba(255,255,255,0.55); font-size: 0.6rem; }
+    .screen-label {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 10px;
     }
 
-    @media (max-width: 600px) {
-      .header-inner { padding: 28px 16px 24px; }
-      .policy-card  { padding: 22px 16px; }
-      .header-text .app-name { font-size: 1.3rem; }
-      main { padding: 28px 16px 48px; }
+    /* ── DOWNLOAD ─────────────────────────────────────────────── */
+    .download-section {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .download-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .download-inner .section-title { margin-bottom: 12px; }
+    .download-inner .section-sub { margin-left: auto; margin-right: auto; margin-bottom: 36px; }
+    .store-btns {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 14px;
+      padding: 14px 24px;
+      text-decoration: none;
+      transition: transform .2s, opacity .2s;
+      min-width: 190px;
+    }
+    .store-btn:hover { transform: translateY(-3px); opacity: 0.9; }
+    .store-btn .store-icon { font-size: 28px; }
+    .store-btn .store-text { text-align: left; }
+    .store-btn .store-get { font-size: 0.7rem; opacity: 0.65; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+    .store-btn .store-name { font-size: 1rem; font-weight: 800; }
+    .store-note {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── LINKS ────────────────────────────────────────────────── */
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      padding: 40px 24px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .footer-brand .f-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .footer-brand .f-name span { color: var(--amber); }
+    .footer-brand p {
+      font-size: 0.82rem;
+      max-width: 260px;
+      line-height: 1.6;
+    }
+    .footer-links h4 {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links ul li { margin-bottom: 8px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 24px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 60px 20px 72px; }
+      .section { padding: 52px 20px; }
+      .section-title { font-size: 1.5rem; }
+      .stat-item { padding: 18px 24px; }
+      .stat-num { font-size: 1.5rem; }
+    }
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 1.65rem; }
+      .hero .subtitle { font-size: 0.95rem; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .exam-grid { grid-template-columns: 1fr 1fr; }
+      .top-nav-inner .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <div class="logo-wrap">📊</div>
-    <div class="header-text">
-      <div class="app-name">Deneme Takip <span>/ Deneva</span></div>
-      <div class="page-title">Gizlilik Politikası</div>
-      <a class="back-link" href="../">← Ana Sayfaya Dön</a>
+<!-- ═══════════════════════════════════════════════════════════ NAV -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a class="nav-logo" href="#">
+      <span class="nav-icon">📊</span>
+      <span class="nav-name">Deneme Takip <span>/ Deneva</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="#ozellikler">Özellikler</a>
+      <a class="nav-link" href="#sinavlar">Sınavlar</a>
+      <a class="nav-link" href="#nasil-calisir">Nasıl Çalışır</a>
+      <a class="nav-link" href="#ekranlar">Ekranlar</a>
+      <a class="nav-link" href="#indir">İndir</a>
+      <a class="nav-link" href="gizlilik/">Gizlilik</a>
     </div>
-  </div>
-</header>
-
-<!-- STICKY NAV -->
-<nav class="toc-bar">
-  <div class="toc-inner">
-    <a class="toc-link" href="#veri">📋 Veri</a>
-    <a class="toc-link" href="#amac">🎯 Amaç</a>
-    <a class="toc-link" href="#ucuncu">🔗 3. Taraf</a>
-    <a class="toc-link" href="#guvenlik">🔐 Güvenlik</a>
-    <a class="toc-link" href="#silme">🗑️ Silme</a>
-    <a class="toc-link" href="#izinler">📲 İzinler</a>
-    <a class="toc-link" href="#iletisim">✉️ İletişim</a>
   </div>
 </nav>
 
-<!-- MAIN -->
-<main>
-  <div style="margin-bottom: 32px;">
-    <span class="section-label">🔒 Yasal Bilgi</span>
-    <h1 class="section-title">Gizlilik Politikası</h1>
-  </div>
-
-  <p style="color:var(--muted); font-size:0.88rem; margin-bottom:28px;">
-    Son güncelleme: <strong style="color:var(--text)">Eylül 2026</strong>&nbsp;·&nbsp;
-    Bu gizlilik politikası, <strong style="color:var(--text)">Deneme Takip</strong>
-    uygulamasının kullanıcı verilerini nasıl topladığını, kullandığını ve
-    koruduğunu açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul
-    etmiş sayılırsınız.
-  </p>
-
-  <!-- 1. Toplanan Veriler -->
-  <div class="policy-card" id="veri">
-    <h2>Toplanan Veriler</h2>
-    <p>Uygulama yalnızca işlevsel amaçlarla aşağıdaki verileri toplar:</p>
-    <ul>
-      <li><strong>Hesap bilgileri:</strong> Google ile giriş yapıldığında
-        ad, e-posta adresi ve profil fotoğrafı.</li>
-      <li><strong>Sınav verileri:</strong> Kullanıcı tarafından girilen sınav
-        sonuçları, ders netleri, tarih ve süre bilgileri.</li>
-      <li><strong>Yanlış soru fotoğrafları:</strong> Yanlış soru arşivi için
-        kullanıcının yüklediği görüntüler (yalnızca Firebase Storage'da saklanır).</li>
-      <li><strong>Bildirim tercihleri:</strong> Kullanıcının ayarladığı
-        hatırlatıcı zamanları.</li>
-      <li><strong>Reklam verileri:</strong> Google AdMob tarafından kişiselleştirilmiş
-        reklam sunmak amacıyla cihaz bilgileri toplanabilir.</li>
-    </ul>
-    <div class="info-box">
-      ℹ️ Hiçbir veri başka kullanıcılarla paylaşılmaz. Verilerinize yalnızca
-      siz erişebilirsiniz.
+<!-- ═══════════════════════════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo">📊</div>
+    <h1>Deneme Takip<br /><span>Deneva</span></h1>
+    <p class="subtitle">
+      KPSS, YKS, LGS ve tüm özel denemelerinizi tek uygulamada takip edin.
+      Akıllı analizler, yanlış arşivi ve PDF raporlarla sınava hazırlığınızı
+      bir üst seviyeye taşıyın.
+    </p>
+    <div class="hero-badges">
+      <span class="hero-badge">📱 Android &amp; iOS</span>
+      <span class="hero-badge">☁️ Bulut Senkron</span>
+      <span class="hero-badge">🔒 Güvenli</span>
+      <span class="hero-badge">📊 Akıllı Analiz</span>
+      <span class="hero-badge">🆓 Ücretsiz</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#indir">
+        ⬇️ Şimdi İndir
+      </a>
+      <a class="btn-secondary" href="#ozellikler">
+        ✨ Özellikleri Keşfet
+      </a>
     </div>
   </div>
+</section>
 
-  <!-- 2. Kullanım Amacı -->
-  <div class="policy-card" id="amac">
-    <h2>Verilerin Kullanım Amacı</h2>
-    <p>Toplanan veriler yalnızca şu amaçlarla kullanılır:</p>
-    <ul>
-      <li>Sınav sonuçlarının saklanması ve analiz edilmesi</li>
-      <li>Kullanıcı hesabının yönetilmesi</li>
-      <li>Çalışma hatırlatıcılarının gönderilmesi</li>
-      <li>Uygulama içi reklamların gösterilmesi</li>
-      <li>PDF raporu oluşturulması</li>
-    </ul>
-  </div>
-
-  <!-- 3. Üçüncü Taraf -->
-  <div class="policy-card" id="ucuncu">
-    <h2>Üçüncü Taraf Hizmetler</h2>
-    <p>Uygulama aşağıdaki güvenilir üçüncü taraf hizmetleri kullanmaktadır:</p>
-    <div class="service-grid">
-      <span class="svc-badge"><span class="dot"></span>Firebase Authentication</span>
-      <span class="svc-badge"><span class="dot"></span>Cloud Firestore</span>
-      <span class="svc-badge"><span class="dot"></span>Firebase Storage</span>
-      <span class="svc-badge"><span class="dot"></span>Google AdMob</span>
-      <span class="svc-badge"><span class="dot"></span>Google Sign-In</span>
+<!-- ═══════════════════════════════════════════════════════ STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">7<span>+</span></div>
+      <div class="stat-label">Sınav Türü</div>
     </div>
-    <hr class="divider" />
-    <p>Bu hizmetlerin kendi gizlilik politikaları geçerlidir:</p>
-    <ul>
-      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Gizlilik Politikası ↗</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Gizlilik Politikası ↗</a></li>
-    </ul>
-  </div>
-
-  <!-- 4. Güvenlik -->
-  <div class="policy-card" id="guvenlik">
-    <h2>Veri Güvenliği</h2>
-    <p>Tüm kullanıcı verileri Firebase altyapısında güvenli biçimde saklanmaktadır.
-      Firebase güvenlik kuralları ile yetkisiz erişim engellenmektedir. Veriler
-      şifreli kanallar (HTTPS/TLS) üzerinden iletilmektedir.</p>
-    <p>Fotoğraflarınız yalnızca sizin Firebase Storage klasörünüzde tutulur;
-      başka hiçbir kullanıcı bu dosyalara erişemez.</p>
-  </div>
-
-  <!-- 5. Veri Silme -->
-  <div class="policy-card" id="silme">
-    <h2>Veri Silme</h2>
-    <p>Hesabınızı ve tüm verilerinizi silmek için uygulama içindeki
-      <strong>Profil → Hesabı Sil</strong> seçeneğini kullanabilirsiniz.</p>
-    <div class="alert-box">
-      ⚠️ Silme işlemi geri alınamaz; tüm sınav verileri, analiz geçmişi ve
-      fotoğraflar <strong>kalıcı olarak silinir</strong>.
+    <div class="stat-item">
+      <div class="stat-num">8<span>+</span></div>
+      <div class="stat-label">Ana Özellik</div>
     </div>
-    <p style="margin-top:12px;">
-      Ayrıca <a href="../hesap-sil/">veri silme talep formumuzu</a> kullanarak
-      7 iş günü içinde işlem yapılmasını talep edebilirsiniz.
+    <div class="stat-item">
+      <div class="stat-num">☁️</div>
+      <div class="stat-label">Bulut Yedekleme</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">📄</div>
+      <div class="stat-label">PDF Rapor</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">🔔</div>
+      <div class="stat-label">Hatırlatıcılar</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ ÖZELLIKLER -->
+<div id="ozellikler">
+  <div class="section">
+    <span class="section-label">✨ Özellikler</span>
+    <h2 class="section-title">Her şey tek uygulamada</h2>
+    <p class="section-sub">
+      Sınava hazırlık sürecinizi yönetmek için ihtiyaç duyduğunuz tüm araçlar
+      Deneva'da sizi bekliyor.
+    </p>
+
+    <div class="feat-grid">
+      <div class="feat-card">
+        <span class="feat-icon">📝</span>
+        <div class="feat-title">Sınav Kaydı</div>
+        <div class="feat-desc">
+          Her deneme sınavını tarih, süre ve ders bazlı netlerle kaydedin.
+          Geçmişe dönük verilerinize istediğiniz zaman ulaşın.
+        </div>
+        <span class="feat-tag">Temel Özellik</span>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">📈</span>
+        <div class="feat-title">Performans Analizi</div>
+        <div class="feat-desc">
+          Net trendi grafiği, aylık ortalama, doğru/yanlış/boş dağılımı
+          ve ders bazlı başarı oranlarını görsel olarak inceleyin.
+        </div>
+        <span class="feat-tag">Analiz</span>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">📷</span>
+        <div class="feat-title">Yanlış Arşivi</div>
+        <div class="feat-desc">
+          Yanlış yaptığınız soruların fotoğrafını çekin, ders bazlı
+          etiketleyin. İstediğiniz zaman gözden geçirin, üzerine not alın.
+        </div>
+        <span class="feat-tag">Fotoğraf</span>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">🔔</span>
+        <div class="feat-title">Akıllı Hatırlatıcılar</div>
+        <div class="feat-desc">
+          Günlük çalışma alarmları kurarak düzenli çalışma alışkanlığı
+          edinin. Sınav öncesi motivasyonunuzu yüksek tutun.
+        </div>
+        <span class="feat-tag">Bildirim</span>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">📄</span>
+        <div class="feat-title">PDF Raporları</div>
+        <div class="feat-desc">
+          Sınav analiz raporlarınızı profesyonel PDF belgesi olarak
+          dışa aktarın. Öğretmenlerinizle veya ailenizle paylaşın.
+        </div>
+        <span class="feat-tag">PDF</span>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">☁️</span>
+        <div class="feat-title">Bulut Senkronizasyon</div>
+        <div class="feat-desc">
+          Tüm verileriniz Firebase ile güvenli biçimde saklanır.
+          Telefon değiştirseniz bile tüm sınav geçmişiniz elinizin altında.
+        </div>
+        <span class="feat-tag">Firebase</span>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">🔍</span>
+        <div class="feat-title">Ders Bazlı Takip</div>
+        <div class="feat-desc">
+          Hangi derste daha çok zayıf olduğunuzu görün. Ders bazlı net
+          ortalamalarınızı karşılaştırın ve önceliklerinizi belirleyin.
+        </div>
+        <span class="feat-tag">Ders Analizi</span>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">🎯</span>
+        <div class="feat-title">Çoklu Sınav Desteği</div>
+        <div class="feat-desc">
+          TYT, AYT, KPSS, LGS ve özel denemeler için ayrı ayrı yapılandırılmış
+          soru kategorileri ve net hesaplama mantığı.
+        </div>
+        <span class="feat-tag">Çoklu Sınav</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SINAVLAR -->
+<section class="exam-section" id="sinavlar">
+  <div class="exam-inner">
+    <span class="section-label">🎓 Desteklenen Sınavlar</span>
+    <h2 class="section-title">Hangi sınava hazırlanıyorsunuz?</h2>
+    <p class="section-sub">
+      Deneva, Türkiye'deki en kapsamlı sınavları destekler.
+      Tüm sınav türlerinizi tek hesapta yönetin.
+    </p>
+
+    <div class="exam-grid">
+      <div class="exam-card">
+        <div class="exam-label">KPSS</div>
+        <div class="exam-name">Kamu Personel Seçme Sınavı</div>
+        <div class="exam-detail">GY, GK, Eğitim Bilimleri ve Alan Bilgisi kategorileriyle tam destek.</div>
+      </div>
+      <div class="exam-card">
+        <div class="exam-label">TYT</div>
+        <div class="exam-name">Temel Yeterlilik Testi</div>
+        <div class="exam-detail">Türkçe, Sosyal, Matematik ve Fen derslerini ders bazlı takip edin.</div>
+      </div>
+      <div class="exam-card">
+        <div class="exam-label">AYT</div>
+        <div class="exam-name">Alan Yeterlilik Testi</div>
+        <div class="exam-detail">Sayısal, Eşit Ağırlık ve Sözel alan seçenekleriyle net analizi.</div>
+      </div>
+      <div class="exam-card">
+        <div class="exam-label">LGS</div>
+        <div class="exam-name">Liselere Geçiş Sınavı</div>
+        <div class="exam-detail">8. sınıf öğrencileri için branş bazlı deneme takibi.</div>
+      </div>
+      <div class="exam-card">
+        <div class="exam-label">AYT–S</div>
+        <div class="exam-name">Sayısal Alan</div>
+        <div class="exam-detail">Matematik, Fizik, Kimya ve Biyoloji net takibi.</div>
+      </div>
+      <div class="exam-card">
+        <div class="exam-label">Özel</div>
+        <div class="exam-name">Özel Denemeler</div>
+        <div class="exam-detail">Yayınevi veya kurum denemelerinizi de özel kategoriyle kaydedin.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ NASIL ÇALIŞIR -->
+<div id="nasil-calisir">
+  <div class="section">
+    <span class="section-label">🚀 Nasıl Çalışır?</span>
+    <h2 class="section-title">4 adımda sınav takibi</h2>
+    <p class="section-sub">
+      Deneva'yı kurmak ve kullanmaya başlamak son derece kolaydır.
+    </p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-icon">📲</span>
+        <div class="step-title">Uygulamayı İndir</div>
+        <div class="step-desc">
+          Google Play Store veya App Store'dan Deneva'yı ücretsiz indirin
+          ve Google hesabınızla saniyeler içinde giriş yapın.
+        </div>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">🎓</span>
+        <div class="step-title">Sınav Türünü Seç</div>
+        <div class="step-desc">
+          KPSS, TYT, AYT, LGS veya özel deneme seçeneğini belirleyin.
+          Uygulama ilgili ders kategorilerini otomatik hazırlar.
+        </div>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">✏️</span>
+        <div class="step-title">Sonuçları Gir</div>
+        <div class="step-desc">
+          Her denemedeki doğru, yanlış ve boş sayılarını girin.
+          Net hesaplama otomatik yapılır.
+        </div>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">📊</span>
+        <div class="step-title">Analizi İzle</div>
+        <div class="step-desc">
+          Grafikler, ders karşılaştırmaları ve trend raporuyla
+          hangi alanlarda gelişmeniz gerektiğini görün.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ EKRANLAR -->
+<section class="screens-section" id="ekranlar">
+  <div class="screens-inner">
+    <span class="section-label">📱 Uygulama Ekranları</span>
+    <h2 class="section-title">Temiz ve sezgisel arayüz</h2>
+    <p class="section-sub">
+      Her ekran, sınava hazırlanma sürecini kolaylaştırmak için
+      özenle tasarlandı.
+    </p>
+
+    <div class="screen-row">
+      <div>
+        <div class="screen-mock">
+          <div class="mock-top">Ana Ekran</div>
+          <div class="mock-body">
+            <div class="mock-bar accent"></div>
+            <div class="mock-bar w90"></div>
+            <div class="mock-bar w60"></div>
+            <div class="mock-stat">
+              <div class="dot dot-g"></div><span>Toplam Sınav</span>
+            </div>
+            <div class="mock-bar w80"></div>
+            <div class="mock-bar w40"></div>
+            <div class="mock-stat">
+              <div class="dot dot-b"></div><span>Ort. Net</span>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">Ana Ekran</div>
+      </div>
+      <div>
+        <div class="screen-mock">
+          <div class="mock-top">Analiz</div>
+          <div class="mock-body">
+            <div class="mock-bar green"></div>
+            <div class="mock-bar w90"></div>
+            <div class="mock-stat">
+              <div class="dot dot-g"></div><span>Doğru</span>
+            </div>
+            <div class="mock-stat">
+              <div class="dot dot-r"></div><span>Yanlış</span>
+            </div>
+            <div class="mock-bar purple w60"></div>
+            <div class="mock-bar w50"></div>
+            <div class="mock-bar w80"></div>
+          </div>
+        </div>
+        <div class="screen-label">Analiz Grafiği</div>
+      </div>
+      <div>
+        <div class="screen-mock">
+          <div class="mock-top">Yanlış Arşiv</div>
+          <div class="mock-body">
+            <div class="mock-bar accent w60"></div>
+            <div class="mock-bar w90"></div>
+            <div class="mock-bar w70"></div>
+            <div class="mock-stat">
+              <div class="dot dot-b"></div><span>Matematik</span>
+            </div>
+            <div class="mock-stat">
+              <div class="dot dot-r"></div><span>Türkçe</span>
+            </div>
+            <div class="mock-bar w80"></div>
+          </div>
+        </div>
+        <div class="screen-label">Yanlış Arşivi</div>
+      </div>
+      <div>
+        <div class="screen-mock">
+          <div class="mock-top">Sınav Ekle</div>
+          <div class="mock-body">
+            <div class="mock-bar w90"></div>
+            <div class="mock-bar accent w70"></div>
+            <div class="mock-bar w80"></div>
+            <div class="mock-bar w60"></div>
+            <div class="mock-bar green w50"></div>
+            <div class="mock-bar w90"></div>
+            <div class="mock-bar w40"></div>
+          </div>
+        </div>
+        <div class="screen-label">Sınav Ekle</div>
+      </div>
+      <div>
+        <div class="screen-mock">
+          <div class="mock-top">Profil</div>
+          <div class="mock-body">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);margin:0 auto 8px;"></div>
+            <div class="mock-bar accent" style="margin:0 auto;width:60%"></div>
+            <div class="mock-bar w90"></div>
+            <div class="mock-bar w60"></div>
+            <div class="mock-bar w80"></div>
+            <div class="mock-bar w40"></div>
+          </div>
+        </div>
+        <div class="screen-label">Profil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ İNDİR -->
+<section class="download-section" id="indir">
+  <div class="download-inner">
+    <span class="section-label" style="display:inline-flex;margin-bottom:8px;">📲 İndir</span>
+    <h2 class="section-title">Hemen başlayın</h2>
+    <p class="section-sub">
+      Deneva ücretsiz. Android ve iOS için mevcut. Hesap oluşturun,
+      sınavlarınızı kaydetmeye hemen başlayın.
+    </p>
+    <div class="store-btns">
+      <a class="store-btn" href="#" aria-label="Google Play'den İndir">
+        <span class="store-icon">🤖</span>
+        <div class="store-text">
+          <div class="store-get">Google Play'den İndir</div>
+          <div class="store-name">Android</div>
+        </div>
+      </a>
+      <a class="store-btn" href="#" aria-label="App Store'dan İndir">
+        <span class="store-icon">🍎</span>
+        <div class="store-text">
+          <div class="store-get">App Store'dan İndir</div>
+          <div class="store-name">iPhone &amp; iPad</div>
+        </div>
+      </a>
+    </div>
+    <p class="store-note">
+      Android 5.0 ve üzeri · iOS 13.0 ve üzeri · Ücretsiz · Reklam destekli
     </p>
   </div>
+</section>
 
-  <!-- 6. Çocuklar -->
-  <div class="policy-card">
-    <h2>Çocukların Gizliliği</h2>
-    <p>Bu uygulama 13 yaşın altındaki çocuklara yönelik değildir ve bilerek
-      bu yaş grubundan kişisel veri toplamaz. LGS hazırlığı yapan kullanıcıların
-      ebeveyn gözetiminde uygulamayı kullanması tavsiye edilir.</p>
-  </div>
-
-  <!-- 7. İzinler -->
-  <div class="policy-card" id="izinler">
-    <h2>Uygulama İzinleri</h2>
-    <p>Uygulama aşağıdaki cihaz izinlerini yalnızca ilgili özellik için talep eder:</p>
-    <div class="perm-list">
-      <div class="perm-item">
-        <span class="perm-icon">📷</span>
-        <div class="perm-text">
-          <div class="perm-name">Kamera &amp; Fotoğraf Galerisi</div>
-          <p class="perm-desc">Yanlış soru fotoğrafı çekmek veya galeriden yüklemek için kullanılır.</p>
-        </div>
-      </div>
-      <div class="perm-item">
-        <span class="perm-icon">🔔</span>
-        <div class="perm-text">
-          <div class="perm-name">Bildirimler</div>
-          <p class="perm-desc">Günlük çalışma hatırlatıcıları göndermek için kullanılır.</p>
-        </div>
-      </div>
-      <div class="perm-item">
-        <span class="perm-icon">🌐</span>
-        <div class="perm-text">
-          <div class="perm-name">İnternet Erişimi</div>
-          <p class="perm-desc">Veri senkronizasyonu, bulut yedekleme ve reklam gösterimi için gereklidir.</p>
-        </div>
-      </div>
-      <div class="perm-item">
-        <span class="perm-icon">💾</span>
-        <div class="perm-text">
-          <div class="perm-name">Depolama</div>
-          <p class="perm-desc">PDF raporu oluşturmak ve yerel önbellek için kullanılır.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 8. Politika Değişiklikleri -->
-  <div class="policy-card">
-    <h2>Politika Değişiklikleri</h2>
-    <p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler uygulama
-      içinde bildirilecektir. Güncel politikayı bu sayfa üzerinden takip edebilirsiniz.</p>
-  </div>
-
-  <!-- 9. İletişim -->
-  <div id="iletisim" style="margin-top: 8px;">
-    <div class="contact-card">
-      <span class="c-icon">✉️</span>
-      <div class="c-text">
-        <h3>Sorularınız mı var?</h3>
-        <p>Gizlilik ile ilgili her türlü soru ve talebiniz için bize ulaşabilirsiniz.</p>
-        <a href="mailto:msasoftware49@gmail.com">msasoftware49@gmail.com</a>
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════ FOOTER -->
 <footer>
-  <div style="font-size:1.5rem; margin-bottom:6px;">📊</div>
-  <div style="color:rgba(255,255,255,0.8); font-weight:700; margin-bottom:4px;">
-    Deneme Takip / Deneva
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="f-name">Deneme Takip <span>/ Deneva</span></div>
+      <p>
+        KPSS, YKS, LGS ve özel sınav hazırlığı için akıllı deneme takip ve analiz uygulaması.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Uygulama</h4>
+      <ul>
+        <li><a href="#ozellikler">Özellikler</a></li>
+        <li><a href="#sinavlar">Desteklenen Sınavlar</a></li>
+        <li><a href="#nasil-calisir">Nasıl Çalışır?</a></li>
+        <li><a href="#indir">İndir</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Yasal</h4>
+      <ul>
+        <li><a href="gizlilik/">Gizlilik Politikası</a></li>
+        <li><a href="hesap-sil/">Veri Silme Talebi</a></li>
+        <li><a href="mailto:msasoftware49@gmail.com">İletişim</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-links">
-    <a href="../">Ana Sayfa</a>
-    <a href="../hesap-sil/">Veri Silme Talebi</a>
-    <a href="mailto:msasoftware49@gmail.com">İletişim</a>
+
+  <div class="footer-bottom">
+    <span style="font-size:1.2rem;">📊</span><br />
+    &copy; 2026 Deneva – Deneme Takip Uygulaması. Tüm hakları saklıdır.
   </div>
-  <div>&copy; 2026 Deneva. Tüm hakları saklıdır.</div>
 </footer>
 
 </body>
