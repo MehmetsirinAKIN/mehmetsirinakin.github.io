@@ -5,16 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gizlilik Politikası – Deneva: Deneme Takip</title>
   <style>
-    /* ── Reset & Base ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --navy:    #0D1B4B;
       --blue:    #1565C0;
       --blue2:   #1976D2;
       --light:   #E3F2FD;
       --amber:   #FFB300;
-      --amber2:  #FFC107;
       --green:   #2E7D32;
       --red:     #C62828;
       --bg:      #F0F4FF;
@@ -23,9 +20,7 @@
       --muted:   #607080;
       --border:  #E0E6F5;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
                    'Helvetica Neue', Arial, sans-serif;
@@ -35,7 +30,7 @@
       font-size: 15px;
     }
 
-    /* ── HEADER ──────────────────────────────────────────────── */
+    /* Header */
     header {
       background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
       color: #fff;
@@ -43,7 +38,6 @@
       position: relative;
       overflow: hidden;
     }
-
     header::before {
       content: '';
       position: absolute;
@@ -53,436 +47,60 @@
       background: rgba(255,255,255,0.05);
       pointer-events: none;
     }
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -60px;
-      width: 260px; height: 260px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-      pointer-events: none;
-    }
-
     .header-inner {
       max-width: 900px;
       margin: 0 auto;
-      padding: 48px 24px 40px;
+      padding: 40px 24px 36px;
       position: relative;
       z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    /* Logo */
-    .logo-wrap {
-      flex-shrink: 0;
-      width: 80px; height: 80px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.12);
-      border: 2px solid rgba(255,255,255,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 38px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    }
-
-    .header-text { flex: 1; min-width: 220px; }
-    .header-text .app-name {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-    .header-text .app-name span { color: var(--amber); }
-    .header-text .tagline {
-      font-size: 0.9rem;
-      opacity: 0.75;
-      margin-top: 4px;
-    }
-    .header-text .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 14px;
-    }
-    .header-text .badge-pill {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #fff;
-      border-radius: 20px;
-      padding: 3px 12px;
-      font-size: 0.78rem;
-      font-weight: 600;
-    }
-
-    /* ── APP SHOWCASE ─────────────────────────────────────────── */
-    .showcase {
-      background: linear-gradient(180deg, #0f2367 0%, #1B3A8A 100%);
-      padding: 0;
-    }
-
-    .showcase-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-
-    .showcase-inner h2 {
-      color: #fff;
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .showcase-inner .sub {
-      color: rgba(255,255,255,0.65);
-      font-size: 0.9rem;
-      margin-bottom: 32px;
-    }
-
-    /* Feature grid */
-    .feat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 16px;
-    }
-
-    .feat-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 20px 18px;
-      transition: transform .2s, background .2s;
-    }
-    .feat-card:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,0.13);
-    }
-    .feat-card .feat-icon {
-      font-size: 28px;
-      margin-bottom: 10px;
-      display: block;
-    }
-    .feat-card .feat-title {
-      font-weight: 700;
-      color: var(--amber);
-      font-size: 0.95rem;
-      margin-bottom: 6px;
-    }
-    .feat-card .feat-desc {
-      color: rgba(255,255,255,0.72);
-      font-size: 0.83rem;
-      line-height: 1.55;
-    }
-
-    /* Desteklenen sınav türleri */
-    .exam-types {
-      margin-top: 36px;
-    }
-    .exam-types h3 {
-      color: #fff;
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-      opacity: 0.9;
-    }
-    .exam-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .exam-chip {
-      padding: 8px 20px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 0.88rem;
-      letter-spacing: 0.3px;
-    }
-    .chip-kpss { background: #E3F2FD; color: #0D47A1; }
-    .chip-yks  { background: #F3E5F5; color: #4A148C; }
-    .chip-tyt  { background: #E8F5E9; color: #1B5E20; }
-    .chip-ayt  { background: #FFF3E0; color: #E65100; }
-    .chip-lgs  { background: #FCE4EC; color: #880E4F; }
-
-    /* Screenshot mockup area */
-    .screen-row {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-    .screen-mock {
-      width: 130px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.07);
-      border: 2px solid rgba(255,255,255,0.15);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .screen-mock .mock-top {
-      background: rgba(255,255,255,0.1);
-      padding: 10px 12px 8px;
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.8);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .screen-mock .mock-body {
-      padding: 10px 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .mock-bar {
-      height: 8px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.18);
-    }
-    .mock-bar.accent  { background: var(--amber); width: 70%; }
-    .mock-bar.green   { background: #66BB6A; width: 55%; }
-    .mock-bar.purple  { background: #CE93D8; width: 45%; }
-    .mock-bar.w80 { width: 80%; }
-    .mock-bar.w60 { width: 60%; }
-    .mock-bar.w40 { width: 40%; }
-    .mock-bar.w90 { width: 90%; }
-    .mock-stat {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 4px;
-    }
-    .mock-stat .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-    }
-    .mock-stat .dot-g { background: #66BB6A; }
-    .mock-stat .dot-r { background: #EF9A9A; }
-    .mock-stat .dot-b { background: #90CAF9; }
-    .mock-stat span { color: rgba(255,255,255,0.6); font-size: 0.6rem; }
-
-    /* ── MAIN CONTENT ─────────────────────────────────────────── */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 24px 60px;
-    }
-
-    /* Section headers */
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--light);
-      color: var(--blue);
-      border-radius: 30px;
-      padding: 4px 14px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 24px;
-    }
-
-    /* Policy card */
-    .policy-card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(21,101,192,0.07);
-      padding: 32px 28px;
-      margin-bottom: 24px;
-      border: 1px solid var(--border);
-    }
-
-    .policy-card h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .policy-card h2::before {
-      content: '';
-      display: inline-block;
-      width: 4px; height: 20px;
-      background: var(--blue);
-      border-radius: 3px;
-      flex-shrink: 0;
-    }
-
-    .policy-card p,
-    .policy-card li {
-      color: var(--muted);
-      font-size: 0.93rem;
-      line-height: 1.75;
-      margin-bottom: 6px;
-    }
-
-    .policy-card ul {
-      padding-left: 20px;
-      margin-top: 8px;
-    }
-
-    .policy-card li::marker { color: var(--blue); }
-
-    .policy-card strong { color: var(--text); }
-
-    /* Info box */
-    .info-box {
-      background: #FFF8E1;
-      border-left: 4px solid var(--amber);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin: 12px 0;
-      font-size: 0.88rem;
-      color: #5D4037;
-      line-height: 1.6;
-    }
-
-    /* Alert box */
-    .alert-box {
-      background: #FFEBEE;
-      border-left: 4px solid var(--red);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin: 12px 0;
-      font-size: 0.88rem;
-      color: #7f1515;
-      line-height: 1.6;
-    }
-
-    /* Service badges */
-    .service-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 14px 0;
-    }
-    .svc-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #E8EAF6;
-      color: #283593;
-      border-radius: 8px;
-      padding: 6px 14px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border: 1px solid #C5CAE9;
-    }
-    .svc-badge .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--blue);
-    }
-
-    /* Permission list */
-    .perm-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .perm-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: #F8F9FE;
-      border-radius: 10px;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-    }
-    .perm-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .perm-text .perm-name {
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: var(--text);
-    }
-    .perm-text .perm-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    /* Links */
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Divider */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 24px 0;
-    }
-
-    /* Contact card */
-    .contact-card {
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      border-radius: 16px;
-      padding: 28px 24px;
-      color: #fff;
       display: flex;
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
     }
-    .contact-card .c-icon { font-size: 36px; flex-shrink: 0; }
-    .contact-card .c-text h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
+    .logo-wrap {
+      flex-shrink: 0;
+      width: 72px; height: 72px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
     }
-    .contact-card .c-text p {
-      font-size: 0.85rem;
-      opacity: 0.75;
-      margin-bottom: 10px;
+    .header-text .app-name {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
-    .contact-card a {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
+    .header-text .app-name span { color: var(--amber); }
+    .header-text .page-title {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
       color: #fff;
-      padding: 8px 20px;
-      border-radius: 30px;
-      font-size: 0.85rem;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
       font-weight: 600;
+      text-decoration: none;
       transition: background .2s;
     }
-    .contact-card a:hover {
-      background: rgba(255,255,255,0.25);
+    .back-link:hover {
+      background: rgba(255,255,255,0.2);
       text-decoration: none;
     }
 
-    /* ── FOOTER ──────────────────────────────────────────────── */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.5);
-      text-align: center;
-      padding: 24px;
-      font-size: 0.82rem;
-    }
-    footer a { color: rgba(255,255,255,0.7); }
-
-    /* ── STICKY NAV ───────────────────────────────────────────── */
+    /* Sticky nav */
     .toc-bar {
       background: var(--card-bg);
       border-bottom: 1px solid var(--border);
@@ -511,45 +129,192 @@
       border-bottom: 2px solid transparent;
       transition: color .2s, border-color .2s;
     }
-    .toc-link:hover {
+    .toc-link:hover { color: var(--blue); border-bottom-color: var(--blue); }
+
+    /* Main */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--light);
       color: var(--blue);
-      border-bottom-color: var(--blue);
+      border-radius: 30px;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .policy-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(21,101,192,0.07);
+      padding: 32px 28px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+    .policy-card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .policy-card h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px; height: 20px;
+      background: var(--blue);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .policy-card p,
+    .policy-card li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.75;
+      margin-bottom: 6px;
+    }
+    .policy-card ul { padding-left: 20px; margin-top: 8px; }
+    .policy-card li::marker { color: var(--blue); }
+    .policy-card strong { color: var(--text); }
+
+    .info-box {
+      background: #FFF8E1;
+      border-left: 4px solid var(--amber);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      font-size: 0.88rem;
+      color: #5D4037;
+      line-height: 1.6;
+    }
+    .alert-box {
+      background: #FFEBEE;
+      border-left: 4px solid var(--red);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      font-size: 0.88rem;
+      color: #7f1515;
+      line-height: 1.6;
+    }
+    .service-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+    .svc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #E8EAF6;
+      color: #283593;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid #C5CAE9;
+    }
+    .svc-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+
+    .perm-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .perm-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #F8F9FE;
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+    }
+    .perm-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .perm-text .perm-name { font-weight: 700; font-size: 0.88rem; color: var(--text); }
+    .perm-text .perm-desc { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+    .contact-card {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 16px;
+      padding: 28px 24px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .contact-card .c-icon { font-size: 36px; flex-shrink: 0; }
+    .contact-card .c-text h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .contact-card .c-text p { font-size: 0.85rem; opacity: 0.75; margin-bottom: 10px; }
+    .contact-card a {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .contact-card a:hover { background: rgba(255,255,255,0.25); }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+    }
+    footer a { color: rgba(255,255,255,0.7); }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 10px 0 6px;
     }
 
-    /* ── Responsive ───────────────────────────────────────────── */
     @media (max-width: 600px) {
-      .header-inner { padding: 32px 16px 28px; }
+      .header-inner { padding: 28px 16px 24px; }
       .policy-card  { padding: 22px 16px; }
-      .header-text .app-name { font-size: 1.4rem; }
-      .feat-grid { grid-template-columns: 1fr 1fr; }
-      .showcase-inner { padding: 32px 16px; }
+      .header-text .app-name { font-size: 1.3rem; }
       main { padding: 28px 16px 48px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════ HEADER -->
+<!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="logo-wrap">📊</div>
     <div class="header-text">
       <div class="app-name">Deneme Takip <span>/ Deneva</span></div>
-      <div class="tagline">KPSS &amp; YKS &amp; LGS Sınav Analiz Uygulaması</div>
-      <div class="badges">
-        <span class="badge-pill">📱 Android &amp; iOS</span>
-        <span class="badge-pill">☁️ Firebase</span>
-        <span class="badge-pill">🔒 Güvenli</span>
-        <span class="badge-pill">📊 Analiz</span>
-      </div>
+      <div class="page-title">Gizlilik Politikası</div>
+      <a class="back-link" href="../">← Ana Sayfaya Dön</a>
     </div>
   </div>
 </header>
 
-<!-- ═══════════════════════════════════════════════════════ STICKY NAV -->
+<!-- STICKY NAV -->
 <nav class="toc-bar">
   <div class="toc-inner">
-    <a class="toc-link" href="#uygulama">📱 Uygulama</a>
     <a class="toc-link" href="#veri">📋 Veri</a>
     <a class="toc-link" href="#amac">🎯 Amaç</a>
     <a class="toc-link" href="#ucuncu">🔗 3. Taraf</a>
@@ -560,154 +325,7 @@
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════════════════════ APP SHOWCASE -->
-<section class="showcase">
-  <div class="showcase-inner">
-    <h2 id="uygulama">📱 Uygulama Hakkında</h2>
-    <p class="sub">
-      Deneme Takip, sınava hazırlanan öğrencilerin tüm deneme süreçlerini
-      tek bir yerden yönetmesini sağlayan akıllı bir analiz asistanıdır.
-    </p>
-
-    <div class="feat-grid">
-      <div class="feat-card">
-        <span class="feat-icon">📝</span>
-        <div class="feat-title">Sınav Kaydı</div>
-        <div class="feat-desc">
-          KPSS, YKS (TYT/AYT), LGS ve özel deneme sınavlarınızı
-          tarih, süre ve ders netleriyle kaydedin.
-        </div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">📈</span>
-        <div class="feat-title">Performans Analizi</div>
-        <div class="feat-desc">
-          Aylık bazda net trendi, ortalama başarı, doğru/yanlış/boş
-          dağılımı grafiklerle görüntüleyin.
-        </div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">📷</span>
-        <div class="feat-title">Yanlış Arşivi</div>
-        <div class="feat-desc">
-          Yanlış yaptığınız soruların fotoğrafını çekin, ders bazlı
-          arşivleyin ve istediğiniz zaman gözden geçirin.
-        </div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">🔔</span>
-        <div class="feat-title">Akıllı Hatırlatıcılar</div>
-        <div class="feat-desc">
-          Günlük çalışma hatırlatıcıları belirleyerek düzenli
-          çalışma alışkanlığı edinin.
-        </div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">📄</span>
-        <div class="feat-title">PDF Raporları</div>
-        <div class="feat-desc">
-          Sınav sonuçlarınızı ve analizlerinizi PDF olarak dışa
-          aktarın; saklayin veya paylaşın.
-        </div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">☁️</span>
-        <div class="feat-title">Bulut Senkron</div>
-        <div class="feat-desc">
-          Tüm veriniz Firebase'de güvenle saklanır. Cihaz değiştirseniz
-          bile verilerinize erişebilirsiniz.
-        </div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">🔍</span>
-        <div class="feat-title">Ders Bazlı Takip</div>
-        <div class="feat-desc">
-          Her ders için net ortalamanızı ayrı ayrı görün; hangi
-          derste gelişmeniz gerektiğini keşfedin.
-        </div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">🎯</span>
-        <div class="feat-title">Çoklu Sınav Desteği</div>
-        <div class="feat-desc">
-          TYT, AYT (Sayısal/EA/Sözel), KPSS, LGS — hepsini tek
-          uygulamada takip edin.
-        </div>
-      </div>
-    </div>
-
-    <!-- Ekran mockupları -->
-    <div class="screen-row">
-      <div class="screen-mock">
-        <div class="mock-top">Ana Ekran</div>
-        <div class="mock-body">
-          <div class="mock-bar accent"></div>
-          <div class="mock-bar w90"></div>
-          <div class="mock-bar w60"></div>
-          <div class="mock-stat">
-            <div class="dot dot-g"></div><span>Sınav Sayısı</span>
-          </div>
-          <div class="mock-bar w80"></div>
-          <div class="mock-bar w40"></div>
-        </div>
-      </div>
-      <div class="screen-mock">
-        <div class="mock-top">Analiz</div>
-        <div class="mock-body">
-          <div class="mock-bar green"></div>
-          <div class="mock-bar w90"></div>
-          <div class="mock-stat">
-            <div class="dot dot-g"></div><span>Ort. Net</span>
-          </div>
-          <div class="mock-stat">
-            <div class="dot dot-r"></div><span>Yanlış</span>
-          </div>
-          <div class="mock-bar purple w60"></div>
-          <div class="mock-bar w40"></div>
-        </div>
-      </div>
-      <div class="screen-mock">
-        <div class="mock-top">Yanlış Arşiv</div>
-        <div class="mock-body">
-          <div class="mock-bar accent w60"></div>
-          <div class="mock-bar w90"></div>
-          <div class="mock-bar w70" style="background:rgba(255,255,255,0.15);width:70%"></div>
-          <div class="mock-stat">
-            <div class="dot dot-b"></div><span>Matematik</span>
-          </div>
-          <div class="mock-bar w50" style="background:rgba(255,255,255,0.12);width:50%"></div>
-          <div class="mock-bar w80"></div>
-        </div>
-      </div>
-      <div class="screen-mock">
-        <div class="mock-top">Profil</div>
-        <div class="mock-body">
-          <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.2);margin:0 auto 6px;"></div>
-          <div class="mock-bar accent" style="margin:0 auto;width:60%"></div>
-          <div class="mock-bar w90"></div>
-          <div class="mock-bar w60"></div>
-          <div class="mock-bar w40"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Desteklenen sınav türleri -->
-    <div class="exam-types">
-      <h3>🎓 Desteklenen Sınav Türleri</h3>
-      <div class="exam-chips">
-        <span class="exam-chip chip-kpss">KPSS</span>
-        <span class="exam-chip chip-tyt">TYT</span>
-        <span class="exam-chip chip-ayt">AYT – Sayısal</span>
-        <span class="exam-chip chip-ayt">AYT – Eşit Ağırlık</span>
-        <span class="exam-chip chip-ayt">AYT – Sözel</span>
-        <span class="exam-chip chip-lgs">LGS</span>
-        <span class="exam-chip chip-yks">Özel Deneme</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════ GİZLİLİK POLİTİKASI -->
+<!-- MAIN -->
 <main>
   <div style="margin-bottom: 32px;">
     <span class="section-label">🔒 Yasal Bilgi</span>
@@ -715,8 +333,7 @@
   </div>
 
   <p style="color:var(--muted); font-size:0.88rem; margin-bottom:28px;">
-    Son güncelleme: <strong style="color:var(--text)">Eylül 2026</strong>
-    &nbsp;·&nbsp;
+    Son güncelleme: <strong style="color:var(--text)">Eylül 2026</strong>&nbsp;·&nbsp;
     Bu gizlilik politikası, <strong style="color:var(--text)">Deneme Takip</strong>
     uygulamasının kullanıcı verilerini nasıl topladığını, kullandığını ve
     koruduğunu açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul
@@ -728,26 +345,16 @@
     <h2>Toplanan Veriler</h2>
     <p>Uygulama yalnızca işlevsel amaçlarla aşağıdaki verileri toplar:</p>
     <ul>
-      <li>
-        <strong>Hesap bilgileri:</strong> Google ile giriş yapıldığında
-        ad, e-posta adresi ve profil fotoğrafı.
-      </li>
-      <li>
-        <strong>Sınav verileri:</strong> Kullanıcı tarafından girilen sınav
-        sonuçları, ders netleri, tarih ve süre bilgileri.
-      </li>
-      <li>
-        <strong>Yanlış soru fotoğrafları:</strong> Yanlış soru arşivi için
-        kullanıcının yüklediği görüntüler (yalnızca Firebase Storage'da saklanır).
-      </li>
-      <li>
-        <strong>Bildirim tercihleri:</strong> Kullanıcının ayarladığı
-        hatırlatıcı zamanları.
-      </li>
-      <li>
-        <strong>Reklam verileri:</strong> Google AdMob tarafından kişiselleştirilmiş
-        reklam sunmak amacıyla cihaz bilgileri toplanabilir.
-      </li>
+      <li><strong>Hesap bilgileri:</strong> Google ile giriş yapıldığında
+        ad, e-posta adresi ve profil fotoğrafı.</li>
+      <li><strong>Sınav verileri:</strong> Kullanıcı tarafından girilen sınav
+        sonuçları, ders netleri, tarih ve süre bilgileri.</li>
+      <li><strong>Yanlış soru fotoğrafları:</strong> Yanlış soru arşivi için
+        kullanıcının yüklediği görüntüler (yalnızca Firebase Storage'da saklanır).</li>
+      <li><strong>Bildirim tercihleri:</strong> Kullanıcının ayarladığı
+        hatırlatıcı zamanları.</li>
+      <li><strong>Reklam verileri:</strong> Google AdMob tarafından kişiselleştirilmiş
+        reklam sunmak amacıyla cihaz bilgileri toplanabilir.</li>
     </ul>
     <div class="info-box">
       ℹ️ Hiçbir veri başka kullanıcılarla paylaşılmaz. Verilerinize yalnızca
@@ -755,7 +362,7 @@
     </div>
   </div>
 
-  <!-- 2. Verilerin Kullanım Amacı -->
+  <!-- 2. Kullanım Amacı -->
   <div class="policy-card" id="amac">
     <h2>Verilerin Kullanım Amacı</h2>
     <p>Toplanan veriler yalnızca şu amaçlarla kullanılır:</p>
@@ -768,11 +375,10 @@
     </ul>
   </div>
 
-  <!-- 3. Üçüncü Taraf Hizmetler -->
+  <!-- 3. Üçüncü Taraf -->
   <div class="policy-card" id="ucuncu">
     <h2>Üçüncü Taraf Hizmetler</h2>
     <p>Uygulama aşağıdaki güvenilir üçüncü taraf hizmetleri kullanmaktadır:</p>
-
     <div class="service-grid">
       <span class="svc-badge"><span class="dot"></span>Firebase Authentication</span>
       <span class="svc-badge"><span class="dot"></span>Cloud Firestore</span>
@@ -780,44 +386,29 @@
       <span class="svc-badge"><span class="dot"></span>Google AdMob</span>
       <span class="svc-badge"><span class="dot"></span>Google Sign-In</span>
     </div>
-
     <hr class="divider" />
     <p>Bu hizmetlerin kendi gizlilik politikaları geçerlidir:</p>
     <ul>
-      <li>
-        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
-          Google Gizlilik Politikası ↗
-        </a>
-      </li>
-      <li>
-        <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">
-          Firebase Gizlilik Politikası ↗
-        </a>
-      </li>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Gizlilik Politikası ↗</a></li>
+      <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Gizlilik Politikası ↗</a></li>
     </ul>
   </div>
 
-  <!-- 4. Veri Güvenliği -->
+  <!-- 4. Güvenlik -->
   <div class="policy-card" id="guvenlik">
     <h2>Veri Güvenliği</h2>
-    <p>
-      Tüm kullanıcı verileri Firebase altyapısında güvenli biçimde saklanmaktadır.
+    <p>Tüm kullanıcı verileri Firebase altyapısında güvenli biçimde saklanmaktadır.
       Firebase güvenlik kuralları ile yetkisiz erişim engellenmektedir. Veriler
-      şifreli kanallar (HTTPS/TLS) üzerinden iletilmektedir.
-    </p>
-    <p>
-      Fotoğraflarınız yalnızca sizin Firebase Storage klasörünüzde tutulur;
-      başka hiçbir kullanıcı bu dosyalara erişemez.
-    </p>
+      şifreli kanallar (HTTPS/TLS) üzerinden iletilmektedir.</p>
+    <p>Fotoğraflarınız yalnızca sizin Firebase Storage klasörünüzde tutulur;
+      başka hiçbir kullanıcı bu dosyalara erişemez.</p>
   </div>
 
   <!-- 5. Veri Silme -->
   <div class="policy-card" id="silme">
     <h2>Veri Silme</h2>
-    <p>
-      Hesabınızı ve tüm verilerinizi silmek için uygulama içindeki
-      <strong>Profil → Hesabı Sil</strong> seçeneğini kullanabilirsiniz.
-    </p>
+    <p>Hesabınızı ve tüm verilerinizi silmek için uygulama içindeki
+      <strong>Profil → Hesabı Sil</strong> seçeneğini kullanabilirsiniz.</p>
     <div class="alert-box">
       ⚠️ Silme işlemi geri alınamaz; tüm sınav verileri, analiz geçmişi ve
       fotoğraflar <strong>kalıcı olarak silinir</strong>.
@@ -828,21 +419,18 @@
     </p>
   </div>
 
-  <!-- 6. Çocukların Gizliliği -->
+  <!-- 6. Çocuklar -->
   <div class="policy-card">
     <h2>Çocukların Gizliliği</h2>
-    <p>
-      Bu uygulama 13 yaşın altındaki çocuklara yönelik değildir ve bilerek
+    <p>Bu uygulama 13 yaşın altındaki çocuklara yönelik değildir ve bilerek
       bu yaş grubundan kişisel veri toplamaz. LGS hazırlığı yapan kullanıcıların
-      ebeveyn gözetiminde uygulamayı kullanması tavsiye edilir.
-    </p>
+      ebeveyn gözetiminde uygulamayı kullanması tavsiye edilir.</p>
   </div>
 
   <!-- 7. İzinler -->
   <div class="policy-card" id="izinler">
     <h2>Uygulama İzinleri</h2>
     <p>Uygulama aşağıdaki cihaz izinlerini yalnızca ilgili özellik için talep eder:</p>
-
     <div class="perm-list">
       <div class="perm-item">
         <span class="perm-icon">📷</span>
@@ -878,10 +466,8 @@
   <!-- 8. Politika Değişiklikleri -->
   <div class="policy-card">
     <h2>Politika Değişiklikleri</h2>
-    <p>
-      Bu politika zaman zaman güncellenebilir. Önemli değişiklikler uygulama
-      içinde bildirilecektir. Güncel politikayı bu sayfa üzerinden takip edebilirsiniz.
-    </p>
+    <p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler uygulama
+      içinde bildirilecektir. Güncel politikayı bu sayfa üzerinden takip edebilirsiniz.</p>
   </div>
 
   <!-- 9. İletişim -->
@@ -897,14 +483,18 @@
   </div>
 </main>
 
-<!-- ═══════════════════════════════════════════════════════════ FOOTER -->
+<!-- FOOTER -->
 <footer>
   <div style="font-size:1.5rem; margin-bottom:6px;">📊</div>
   <div style="color:rgba(255,255,255,0.8); font-weight:700; margin-bottom:4px;">
     Deneme Takip / Deneva
   </div>
-  &copy; 2026 Deneva. Tüm hakları saklıdır. &nbsp;·&nbsp;
-  <a href="../hesap-sil/">Veri Silme Talebi</a>
+  <div class="footer-links">
+    <a href="../">Ana Sayfa</a>
+    <a href="../hesap-sil/">Veri Silme Talebi</a>
+    <a href="mailto:msasoftware49@gmail.com">İletişim</a>
+  </div>
+  <div>&copy; 2026 Deneva. Tüm hakları saklıdır.</div>
 </footer>
 
 </body>
