@@ -616,8 +616,92 @@
       .exam-grid { grid-template-columns: 1fr 1fr; }
       .top-nav-inner .nav-links { display: none; }
     }
+    
+.screen-row {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 30px 10px;
+  scroll-snap-type: x mandatory;
+  justify-content: flex-start;
+}
+
+.screen-item {
+  flex: 0 0 auto;
+  width: 210px;
+  text-align: center;
+  scroll-snap-align: center;
+}
+
+.real-screen {
+  width: 100%;
+  height: auto;
+  border: 5px solid #263c70;
+  border-radius: 26px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.35);
+  transition: transform .3s ease;
+  cursor: zoom-in;
+}
+
+.real-screen:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.screen-label {
+  margin-top: 14px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .screen-item {
+    width: 180px;
+  }
+
+  .screen-row {
+    gap: 16px;
+  }
+}
+
   </style>
 </head>
+  
+document.querySelectorAll(".real-screen").forEach(img => {
+  img.addEventListener("click", () => {
+    const overlay = document.createElement("div");
+
+    overlay.style.cssText = `
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.9);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+      cursor:zoom-out;
+      padding:20px;
+    `;
+
+    const bigImg = document.createElement("img");
+    bigImg.src = img.src;
+    bigImg.alt = img.alt;
+    bigImg.style.cssText = `
+      max-width:95%;
+      max-height:95%;
+      object-fit:contain;
+      border-radius:15px;
+    `;
+
+    overlay.appendChild(bigImg);
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", () => {
+      overlay.remove();
+    });
+  });
+});
+
 <body>
 
 <!-- ══════════════════════════════════════════ GİZLİLİK POLİTİKASI LİNKİ -->
