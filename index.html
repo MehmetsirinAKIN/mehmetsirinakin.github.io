@@ -437,67 +437,38 @@
       color: #fff;
       border: 1px solid rgba(255,255,255,0.2);
     }
+    
     .screen-row {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 40px;
+      gap: 24px;
+      overflow-x: auto;
+      padding: 30px 10px;
+      scroll-snap-type: x mandatory;
+      justify-content: flex-start;
     }
-    .screen-mock {
-      width: 150px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.07);
-      border: 2px solid rgba(255,255,255,0.15);
-      overflow: hidden;
-    }
-    .mock-top {
-      background: rgba(255,255,255,0.1);
-      padding: 11px 14px 9px;
-      font-size: 0.67rem;
-      color: rgba(255,255,255,0.85);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .mock-body {
-      padding: 12px 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-    .mock-bar {
-      height: 8px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.18);
-    }
-    .mock-bar.accent  { background: var(--amber); width: 72%; }
-    .mock-bar.green   { background: #66BB6A; width: 58%; }
-    .mock-bar.purple  { background: #CE93D8; width: 48%; }
-    .mock-bar.w90 { width: 90%; }
-    .mock-bar.w80 { width: 80%; }
-    .mock-bar.w70 { width: 70%; }
-    .mock-bar.w60 { width: 60%; }
-    .mock-bar.w50 { width: 50%; }
-    .mock-bar.w40 { width: 40%; }
-    .mock-stat {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 2px;
-    }
-    .dot { width: 8px; height: 8px; border-radius: 50%; }
-    .dot-g { background: #66BB6A; }
-    .dot-r { background: #EF9A9A; }
-    .dot-b { background: #90CAF9; }
-    .mock-stat span { color: rgba(255,255,255,0.55); font-size: 0.6rem; }
-    .screen-label {
+    .screen-item {
+      flex: 0 0 auto;
+      width: 210px;
       text-align: center;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.75rem;
+      scroll-snap-align: center;
+    }
+    .real-screen {
+      width: 100%;
+      height: auto;
+      border: 5px solid #263c70;
+      border-radius: 26px;
+      box-shadow: 0 15px 35px rgba(0,0,0,.35);
+      transition: transform .3s ease;
+      cursor: zoom-in;
+    }
+    .real-screen:hover {
+      transform: translateY(-8px) scale(1.03);
+    }
+    .screen-label {
+      margin-top: 14px;
+      color: #fff;
+      font-size: 14px;
       font-weight: 600;
-      margin-top: 10px;
     }
 
     /* ── DOWNLOAD ─────────────────────────────────────────────── */
@@ -607,6 +578,8 @@
       .section-title { font-size: 1.5rem; }
       .stat-item { padding: 18px 24px; }
       .stat-num { font-size: 1.5rem; }
+      .screen-item { width: 180px; }
+      .screen-row { gap: 16px; }
     }
     @media (max-width: 520px) {
       .hero h1 { font-size: 1.65rem; }
@@ -616,99 +589,15 @@
       .exam-grid { grid-template-columns: 1fr 1fr; }
       .top-nav-inner .nav-links { display: none; }
     }
-    
-.screen-row {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  padding: 30px 10px;
-  scroll-snap-type: x mandatory;
-  justify-content: flex-start;
-}
-
-.screen-item {
-  flex: 0 0 auto;
-  width: 210px;
-  text-align: center;
-  scroll-snap-align: center;
-}
-
-.real-screen {
-  width: 100%;
-  height: auto;
-  border: 5px solid #263c70;
-  border-radius: 26px;
-  box-shadow: 0 15px 35px rgba(0,0,0,.35);
-  transition: transform .3s ease;
-  cursor: zoom-in;
-}
-
-.real-screen:hover {
-  transform: translateY(-8px) scale(1.03);
-}
-
-.screen-label {
-  margin-top: 14px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-@media (max-width: 768px) {
-  .screen-item {
-    width: 180px;
-  }
-
-  .screen-row {
-    gap: 16px;
-  }
-}
-
   </style>
 </head>
-  
-document.querySelectorAll(".real-screen").forEach(img => {
-  img.addEventListener("click", () => {
-    const overlay = document.createElement("div");
-
-    overlay.style.cssText = `
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.9);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      z-index:9999;
-      cursor:zoom-out;
-      padding:20px;
-    `;
-
-    const bigImg = document.createElement("img");
-    bigImg.src = img.src;
-    bigImg.alt = img.alt;
-    bigImg.style.cssText = `
-      max-width:95%;
-      max-height:95%;
-      object-fit:contain;
-      border-radius:15px;
-    `;
-
-    overlay.appendChild(bigImg);
-    document.body.appendChild(overlay);
-
-    overlay.addEventListener("click", () => {
-      overlay.remove();
-    });
-  });
-});
 
 <body>
 
 <!-- ══════════════════════════════════════════ GİZLİLİK POLİTİKASI LİNKİ -->
-<!-- Google Play / App Store gerekliliği: Gizlilik politikası linki -->
 <div style="background:#0D1B4B; text-align:center; padding:8px 16px; font-size:0.82rem;">
   <a href="https://mehmetsirinakin.github.io/deneva-takip-privacy/" style="color:#FFB300; font-weight:600; text-decoration:underline;" target="_blank" rel="noopener">
-   🔒 Gizlilik Politikası
+    🔒 Gizlilik Politikası
   </a>
   &nbsp;·&nbsp;
   <a href="hesap-sil/" style="color:rgba(255,255,255,0.6); text-decoration:underline;">
@@ -974,7 +863,6 @@ document.querySelectorAll(".real-screen").forEach(img => {
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ EKRANLAR -->
-
 <section class="screens-section" id="ekranlar">
   <div class="screens-inner">
     <span class="section-label">📱 Uygulama Ekranları</span>
@@ -985,68 +873,48 @@ document.querySelectorAll(".real-screen").forEach(img => {
 
     <div class="screen-row">
       <div class="screen-item">
-        <img src="images/anasayfa.jpeg"
-             alt="Ana Sayfa" class="real-screen">
+        <img src="images/anasayfa.jpeg" alt="Ana Sayfa" class="real-screen">
         <div class="screen-label">Ana Sayfa</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/analiz_ders.jpeg"
-             alt="Ders Analizi" class="real-screen">
+        <img src="images/analiz_ders.jpeg" alt="Ders Analizi" class="real-screen">
         <div class="screen-label">Ders Analizi</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/brans_detay.jpeg"
-             alt="Branş Detayı" class="real-screen">
+        <img src="images/brans_detay.jpeg" alt="Branş Detayı" class="real-screen">
         <div class="screen-label">Branş Detayı</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/deneme_ekle.jpeg"
-             alt="Deneme Ekle" class="real-screen">
+        <img src="images/deneme_ekle.jpeg" alt="Deneme Ekle" class="real-screen">
         <div class="screen-label">Deneme Ekle</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/deneme_yan-bos.jpeg"
-             alt="Yanlış ve Boş" class="real-screen">
+        <img src="images/deneme_yan-bos.jpeg" alt="Yanlış ve Boş" class="real-screen">
         <div class="screen-label">Yanlış ve Boş</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/kronometre.jpeg"
-             alt="Kronometre" class="real-screen">
+        <img src="images/kronometre.jpeg" alt="Kronometre" class="real-screen">
         <div class="screen-label">Kronometre</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/pdf_foto.jpeg"
-             alt="PDF Rapor" class="real-screen">
+        <img src="images/pdf_foto.jpeg" alt="PDF Rapor" class="real-screen">
         <div class="screen-label">PDF ve Fotoğraf</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/toplu_yan-bos.jpeg"
-             alt="Toplu Yanlış Boş" class="real-screen">
+        <img src="images/toplu_yan-bos.jpeg" alt="Toplu Yanlış Boş" class="real-screen">
         <div class="screen-label">Toplu Yanlış ve Boş</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/toplu_brans_foto.jpeg"
-             alt="Branş Fotoğrafları" class="real-screen">
+        <img src="images/toplu_brans_foto.jpeg" alt="Branş Fotoğrafları" class="real-screen">
         <div class="screen-label">Branş Fotoğrafları</div>
       </div>
-
       <div class="screen-item">
-        <img src="images/tum-kategori.jpeg"
-             alt="Tüm Kategoriler" class="real-screen">
+        <img src="images/tum-kategori.jpeg" alt="Tüm Kategoriler" class="real-screen">
         <div class="screen-label">Tüm Kategoriler</div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- ═══════════════════════════════════════════════════════════ İNDİR -->
 <section class="download-section" id="indir">
@@ -1084,36 +952,67 @@ document.querySelectorAll(".real-screen").forEach(img => {
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="f-name">Deneme Takip <span>/ Deneva</span></div>
-      <p>
-        KPSS, YKS, LGS ve özel sınav hazırlığı için akıllı deneme takip ve analiz uygulaması.
-      </p>
+      <p>Öğrenciler ve adaylar için geliştirilmiş en akıllı sınav analiz ve takip uygulaması.</p>
     </div>
-
     <div class="footer-links">
-      <h4>Uygulama</h4>
+      <h4>Hızlı Bağlantılar</h4>
       <ul>
         <li><a href="#ozellikler">Özellikler</a></li>
-        <li><a href="#sinavlar">Desteklenen Sınavlar</a></li>
-        <li><a href="#nasil-calisir">Nasıl Çalışır?</a></li>
-        <li><a href="#indir">İndir</a></li>
+        <li><a href="#sinavlar">Sınavlar</a></li>
+        <li><a href="#nasil-calisir">Nasıl Çalışır</a></li>
+        <li><a href="#ekranlar">Ekran Görselleri</a></li>
       </ul>
     </div>
-
     <div class="footer-links">
-      <h4>Yasal</h4>
+      <h4>Yasal &amp; Destek</h4>
       <ul>
-        <li><a href="https://mehmetsirinakin.github.io/deneva-takip-privacy/" id="privacy-policy" rel="noopener" target="_blank">🔒 Gizlilik Politikası</a></li>
-        <li><a href="hesap-sil/" rel="noopener">🗑️ Veri Silme Talebi</a></li>
-        <li><a href="mailto:msasoftware49@gmail.com">✉️ İletişim</a></li>
+        <li><a href="https://mehmetsirinakin.github.io/deneva-takip-privacy/">Gizlilik Politikası</a></li>
+        <li><a href="hesap-sil/">Veri Silme Talebi</a></li>
       </ul>
     </div>
   </div>
-
   <div class="footer-bottom">
-    <span style="font-size:1.2rem;">📊</span><br />
-    &copy; 2026 Deneva – Deneme Takip Uygulaması. Tüm hakları saklıdır.
+    &copy; 2026 Deneva. Tüm hakları saklıdır.
   </div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════════════ SCRIPT -->
+<script>
+  document.querySelectorAll(".real-screen").forEach(img => {
+    img.addEventListener("click", () => {
+      const overlay = document.createElement("div");
+
+      overlay.style.cssText = `
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        cursor: zoom-out;
+        padding: 20px;
+      `;
+
+      const bigImg = document.createElement("img");
+      bigImg.src = img.src;
+      bigImg.alt = img.alt;
+      bigImg.style.cssText = `
+        max-width: 95%;
+        max-height: 95%;
+        object-fit: contain;
+        border-radius: 15px;
+      `;
+
+      overlay.appendChild(bigImg);
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", () => {
+        overlay.remove();
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
